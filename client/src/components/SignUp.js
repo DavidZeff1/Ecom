@@ -93,7 +93,7 @@ function SignUp() {
                   <button type="button" className="btn btn-success btn-block btn-lg gradient-custom-4 text-white">Register</button>
                 </div>
 
-                <p className="text-center text-white mt-5 mb-0 fw-bold ">Already have an account? <a href="#!" className="fw-bold text-white"><u>Login here</u></a></p>
+                <p className="text-center text-white mt-5 mb-0 fw-bold ">Already have an account? <a href="/" className="fw-bold text-white"><u>Login here</u></a></p>
 
               </form>
 
