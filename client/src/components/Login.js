@@ -49,8 +49,20 @@ function Login() {
     <div className="bg-dark login-page">
         <div className="row d-flex justify-content-center">
       <div className="col-12 col-md-8 col-lg-6 col-xl-6">
+        
         <div className="card bg-dark text-white" style={{ borderRadius: "1rem" }}>
           <div className="card-body p-5 text-center">
+
+          <div className="mb-4">
+            <img
+              src="/Logo.png"
+              alt="Login Image"
+              className="img-fluid "
+              style={{ width: "500px", height: "300px", borderRadius: "10px" }}
+            />
+          </div>
+
+
             <div className="mb-md-5 mt-md-4 pb-5">
               <h2 className="fw-bold mb-2 text-uppercase">Login</h2>
               <p className="text-white-50 mb-5">Please enter your login and password!</p>

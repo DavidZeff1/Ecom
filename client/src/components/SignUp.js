@@ -54,6 +54,14 @@ function SignUp() {
         <div className="col-12 col-md-9 col-lg-7 col-xl-7">
           <div className="card bg-dark text-white" style={{ borderRadius: "15px" }}>
             <div className="card-body p-5">
+            <div className="mb-4">
+            <img
+              src="/Logo.png"
+              alt="Login Image"
+              className="img-fluid "
+              style={{ width: "800px", height: "300px", borderRadius: "10px" }}
+            />
+          </div>
               <h2 className="text-uppercase text-center mb-5">Create an account</h2>
 
               <form>
