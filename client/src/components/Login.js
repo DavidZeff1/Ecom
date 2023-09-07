@@ -1,9 +1,11 @@
 import React,{useState} from "react";
+import {useNavigate} from 'react-router-dom';
 function Login() {
-
+  let history = useNavigate();
   
   const [email, setEmail] = useState("");
   const [password,setPassword] = useState("");
+  
 
  
 
@@ -19,6 +21,7 @@ function Login() {
   
   async function submitHandler(e){
    
+    
     e.preventDefault();
     try {
         // Send a POST request to your backend
@@ -36,6 +39,19 @@ function Login() {
           setEmail("")
           setPassword("")
           console.log(response);
+          
+          const result = await response.json();
+
+          console.log(result);
+          if(result){
+            history("/homepage")
+          }else{
+            alert("wrong password!")
+            
+            history("/")
+            
+           
+          }
         
           // Handle a successful login (e.g., redirect the user)
         } else {
@@ -114,9 +130,13 @@ function Login() {
                         Forgot password?
                         </a>
                     </p>
+                    
                     <button className="btn btn-outline-light btn-lg px-5" type="submit" onClick={submitHandler}>
+                      
                         Login
+                     
                     </button>
+                    
                 </form>
 
               <div className="d-flex justify-content-center text-center mt-4 pt-1">
@@ -133,7 +153,7 @@ function Login() {
             </div>
             <div>
               <p className="mb-0">
-                Don't have an account? <a href="SignUp.js" className="text-white-50 fw-bold">Sign Up</a>
+                Don't have an account? <a href="/signup" className="text-white-50 fw-bold">Sign Up</a>
               </p>
             </div>
           </div>

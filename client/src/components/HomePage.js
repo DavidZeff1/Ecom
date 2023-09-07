@@ -1,8 +1,16 @@
 import React from 'react'
-
+import Card from "./Card";
+import Head from "./Head";
+import Button from "./Button";
 function HomePage() {
   return (
-    <div>HomePage</div>
+    <div>
+        <Head/>
+        <Button/>
+        <Card/>
+        <Card/>
+    </div>
+    
   )
 }
 

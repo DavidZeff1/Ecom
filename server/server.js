@@ -5,20 +5,31 @@ const cors = require("cors");
 const mongoose = require('mongoose');
 require('dotenv').config();
 const Schema = mongoose.Schema;
-const ObjectId = Schema.ObjectId;
+
 
 
 mongoose.connect(`mongodb+srv://admin-david:${process.env.DATABASE_PASSWORD}@cluster0.xky7db8.mongodb.net/User`);
-
-const  userSchema = {
+const productSchema = new mongoose.Schema({
+    name: String,
+    price: String,
+    quantity: String,
+    location: String,
+    password: String,
+    ownerId: String
+  });
+  
+  const Product = mongoose.model("Product", productSchema);
+  
+  const userSchema = new mongoose.Schema({
     name: String,
     email: String,
-    password: String
-}
+    password: String,
+    products: [], // Reference to Product model
+  });
+  
+  const User = mongoose.model("User", userSchema);
 
-const User =  mongoose.model("User",userSchema);
-
-async function userInsert(collection,doc) {
+  async function userInsert(collection,doc) {
     try {
       return await collection.insertMany(doc);
       
@@ -26,6 +37,8 @@ async function userInsert(collection,doc) {
       console.error(error);
     }
 }
+
+
 async function findUserByEmailAndPassword(collection, email, password) {
     try {
       const user = await collection.findOne({ email, password });
@@ -35,11 +48,16 @@ async function findUserByEmailAndPassword(collection, email, password) {
       throw error; 
     }
   }
-  
- 
 
-
-
+  async function findUserByPassword(collection, password) {
+    try {
+      const user = await collection.findOne({ password });
+      return user;
+    } catch (error) {
+      console.error(error);
+      throw error; 
+    }
+  }
 
 const app = express();
 app.use(cors());
@@ -55,7 +73,7 @@ app.listen(5000,()=>{
 app.post("/sendLogin",(req,res)=>{
     const info = req.body;
     findUserByEmailAndPassword(User, info.email, info.password).then((result)=>{
-        console.log(result);
+       
         if(result){
             res.json(true);
         }else{
@@ -69,4 +87,27 @@ app.post("/register",(req,res)=>{
     const info = req.body;
     
     userInsert(User,info);
+})
+
+app.post("/addProduct",(req,res)=>{
+    const info = req.body;
+   // console.log(info);
+    findUserByPassword(User,info.password).then((result)=>{
+        //console.log(result);
+        if(result){
+            
+            result.products.push(info);
+
+             userInsert(Product,{...info,ownerId:result._id})
+             
+  
+            // Save the updated user document
+            result.save();
+            
+
+            res.json(true);
+        }else{
+            res.json(false);
+        }
+    });
 })
