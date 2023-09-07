@@ -1,5 +1,4 @@
 import React,{useState} from "react";
-
 function Login() {
 
   
@@ -16,9 +15,10 @@ function Login() {
     setPassword(e.target.value)
     console.log(password);
   }
-
+  
   
   async function submitHandler(e){
+   
     e.preventDefault();
     try {
         // Send a POST request to your backend
@@ -32,8 +32,14 @@ function Login() {
   
         // Check the response from the server
         if (response.ok) {
+          
+          setEmail("")
+          setPassword("")
+          console.log(response);
+        
           // Handle a successful login (e.g., redirect the user)
         } else {
+          
           // Handle an unsuccessful login (e.g., display an error message)
         }
       } catch (error) {
@@ -55,10 +61,10 @@ function Login() {
 
           <div className="mb-4">
             <img
+              alt="logo"
               src="/Logo.png"
-              alt="Login Image"
               className="img-fluid "
-              style={{ width: "500px", height: "300px", borderRadius: "10px" }}
+              style={{ width: "100%", height: "300px", borderRadius: "10px" }}
             />
           </div>
 
