@@ -7,7 +7,7 @@ function Head() {
     <section class="ftco-section">
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
     <div class="container">
-    <a class="navbar-brand" href="index.html">Resto</a>
+    <a class="navbar-brand" href="index.html">MeFood</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="fa fa-bars"></span> Menu
     </button>

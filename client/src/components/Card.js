@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Card() {
+function Card(props) {
   return (
     <section style={{ backgroundColor: '#eee' }}>
       <div className="container py-5">
@@ -24,7 +24,7 @@ function Card() {
                     </div>
                   </div>
                   <div className="col-md-6 col-lg-6 col-xl-6">
-                    <h5>Quant trident shirts</h5>
+                    <h5>{props.name}</h5>
                     <div className="d-flex flex-row">
                       <div className="text-danger mb-1 me-2">
                         <i className="fa fa-star"></i>
@@ -32,7 +32,7 @@ function Card() {
                         <i className="fa fa-star"></i>
                         <i className="fa fa-star"></i>
                       </div>
-                      <span>310</span>
+                      <span>location: {props.location}. left in stock: {props.quantity} </span>
                     </div>
                     <div className="mt-1 mb-0 text-muted small">
                       <span>100% cotton</span>
@@ -56,7 +56,7 @@ function Card() {
                   </div>
                   <div className="col-md-6 col-lg-3 col-xl-3 border-sm-start-none border-start">
                     <div className="d-flex flex-row align-items-center mb-1">
-                      <h4 className="mb-1 me-1">$13.99</h4>
+                      <h4 className="mb-1 me-1">${props.price}</h4>
                       <span className="text-danger"><s>$20.99</s></span>
                     </div>
                     <h6 className="text-success">Free shipping</h6>
