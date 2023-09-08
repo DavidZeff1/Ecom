@@ -103,12 +103,12 @@ app.post("/addProduct", (req, res) => {
   });
 });
 
-app.get('/api/products', async (req, res) => {
+app.get("/api/products", async (req, res) => {
   try {
     const products = await Product.find();
     res.json(products);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'Internal Server Error' });
+    res.status(500).json({ error: "Internal Server Error" });
   }
 });
