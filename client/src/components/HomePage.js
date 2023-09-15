@@ -9,8 +9,16 @@ function HomePage() {
 
   useEffect(() => {
     // Make an HTTP GET request to fetch the collection data
+    const accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiZGF2IiwiaWF0IjoxNjk0NDQ5MTA0fQ.s1O7biydlYn7hs3EQVEkOhRFGOxxXAkjjr_gUFNd_ZY"; 
+
+  // Define the headers
+  const headers = {
+    Authorization: `Bearer ${accessToken}`,
+  };
+
+
     axios
-      .get("/api/products")
+      .get("/api/products",{ headers })
       .then((response) => {
         setProducts(response.data);
       })
@@ -18,7 +26,7 @@ function HomePage() {
         console.error(error);
       });
   }, []);
-  console.log(products);
+ 
 
   return (
     <div>

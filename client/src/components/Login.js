@@ -41,9 +41,11 @@ function Login() {
           console.log(response);
           
           const result = await response.json();
-
-          console.log(result);
-          if(result){
+          
+         console.log(result.accessToken);
+         const Atoken = result.accessToken;
+         
+          if(result.ok){
             history("/homepage")
           }else{
             alert("wrong password!")
